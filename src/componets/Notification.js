@@ -6,6 +6,9 @@ import * as notificationDesc from "../constants"
 import { generate_avatar_data } from '../utility'
 import moment from 'moment';
 
+const notificationTagline = notificationDesc.notificationEventTypeMap;
+notificationTagline.FORM_SUBMITTED
+
 const notificationdesc = notificationDesc.notificationDescriptionMap
 
 
@@ -29,7 +32,8 @@ export const Notification = () => {
                       <span className='avatar' style={{ backgroundColor: generate_avatar_data(`${data.patient_first_name}  ${data.patient_last_name}`).color }}>{generate_avatar_data(`${data.patient_first_name}  ${data.patient_last_name}`).initials}</span>
                       <div className='main d-flex'>
                         <div className='notificationagesince'>
-                          <span className='title'>{Object.keys(notificationdesc)[0].toLowerCase()}</span>
+                          {/*<span className='title'>{Object.keys(notificationdesc)[0].toLowerCase()}</span> */}
+                          <span className='title'>{data.event_type }</span>
                           <div className='msgsince'>{moment((data.date_created.split("T")[0]).split("-").join(""), "YYYYMMDD").fromNow()}</div>
                         </div>
                         <div>
