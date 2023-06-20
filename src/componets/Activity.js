@@ -12,12 +12,12 @@ export const Activity = ({ color, bgcolor }) => {
       <ul>
         <span className='select'>Select all </span>
         {
-          Object.keys(actionfilter).map(item => {
+          Object.values(actionfilter).map(item => {
             return (<div key={item}>
               <li className="mt-2 mb-2 w-75 listitem" style={{ backgroundColor: bgcolor }}>
 
                 <button type="button" className="btn-filter" style={{ color: color, backgroundColor: 'transparent' }}
-                ><FaDotCircle />{item.toLowerCase()}</button></li>
+                ><FaDotCircle />{item.text}</button></li>
             </div>)
           })
         }

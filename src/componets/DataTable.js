@@ -10,7 +10,7 @@ export const DataTable = () => {
 
 
   const paytypeDataId = tableData.values.reduce((all, item) => {
-    let existItem = all.find(({ provider_id }) => item.provider_id === provider_id);
+    let existItem = all.find(({ paytype_id }) => item.paytype_id === paytype_id);
     if (existItem) {
       existItem.amount += item.amount;
     } else {
@@ -31,6 +31,17 @@ export const DataTable = () => {
 
   }, [])
 
+  const providertypeDataId = tableData.values.reduce((all, item) => {
+    let existItem = all.find(({ provider_id }) => item.provider_id === provider_id);
+    if (existItem) {
+      existItem.amount += item.amount;
+    } else {
+      all.push(item);
+    }
+    return all;
+
+  }, [])
+
 useEffect( () => {
   getPaytypeId()
 },[])
@@ -40,10 +51,10 @@ useEffect( () => {
   }
 
   const getProviderId = () => {
-    setProviderdata(paytypeDataId)
+    setProviderdata(providertypeDataId)
   }
   const getEmployeetypeId = () => {
-    setEmployeetypedata(employeetypedata)
+    setEmployeetypedata(employeetypeDataId)
   }
   return (
     <div className='p-3'>
@@ -67,7 +78,7 @@ useEffect( () => {
             paytypedata && paytypedata.map(data => {
               return <tr>
                 <td>{data.date}</td>
-                <td>{tableData.categories.provider_id[data.provider_id]}</td>
+                <td>{tableData.categories.paytype_id[data.paytype_id]}</td>
                 <td>{data.amount.toFixed(2)}</td>
               </tr>
             })
@@ -75,13 +86,13 @@ useEffect( () => {
 
           { /** this piece of code will render on condition of providertypeID */}
           {
-            providerdata && providerdata.map(data => {
+           providerdata && providerdata.map(data => {
               return <tr>
                 <td>{data.date}</td>
                 <td>{tableData.categories.provider_id[data.provider_id]}</td>
                 <td>{data.amount.toFixed(2)}</td>
               </tr>
-            })
+            }) 
           }
 
           { /** this piece of code will render on condition of employeetypeID */}
@@ -92,7 +103,7 @@ useEffect( () => {
                 <td>{tableData.categories.employee_type_id[data.employee_type_id]}</td>
                 <td>{data.amount.toFixed(2)}</td>
               </tr>
-            })
+            }) 
           }
 
         </tbody>
