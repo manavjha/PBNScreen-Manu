@@ -51,3 +51,5 @@ export function generate_avatar_data(name) {
 
   return { initials: initials, color: colours[colourIndex] };
 }
+
+console.log(generate_avatar_data("Manu Jha"))

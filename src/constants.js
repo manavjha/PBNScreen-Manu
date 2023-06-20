@@ -43,7 +43,12 @@ export const actionStatus = {
   COMPLETED: "completed"
 };
 
-export const actionDescriptionMap = {};
+export const actionDescriptionMap = {
+FORM: {text:"Form", Desc:"has answered a question on that need your review"},
+APPOINTMENT: {text:"Appointment", Desc:"A patient responded with a text message that we need your help with"},
+FEEDBACK: {text:"Feedback", Desc:"you have received a feedback from Name"},
+
+};
 
 export const notificationFilterMap = {
   APPT_REQUEST: { text: "Appt Request", filters: ["CA", "ARA"] },
@@ -68,4 +73,8 @@ export const notificationStatus = {
   MARKED_AS_READ: "read"
 };
 
-export const notificationDescriptionMap = {};
+export const notificationDescriptionMap = {
+  PAYMENT: {text:"Payment", Desc:"Payment received from"},
+APPOINTMENT: {text:"Appointment", Desc:"Name confirmed her appointment"},
+APPOINTMENT_REQUESR: {text:"Appt Request", Desc:"you have received a feedback from Name"},
+};

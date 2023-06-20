@@ -1,0 +1,186 @@
+.desc {
+    padding-bottom: 4rem;
+    font-size: 2rem;
+    padding-top: 2rem;
+    line-height: 1.5;
+}
+
+h2{
+    font-size: 3rem;
+}
+.btn-icon--green{
+    padding: 5px 10px;
+    border-radius: 15px;
+    color: green;
+    font-weight: 500;
+    font-size: 1rem;
+    width: 35px;
+    background: transparent;
+    border: 1px solid lightgray;
+    margin-right: 5px;
+}
+ul li {
+    list-style: none;
+}
+.title{
+    display: inline-block;
+    background-color: #e9e6e6;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 10px;
+    
+}
+.wrap{
+    margin: 10px;
+    padding: 10px;
+    border-radius: 10px;
+}
+.fx1{
+    flex:0
+}
+.fx2{
+    flex:4
+}
+.main{
+    flex-direction: column;
+    flex:1
+}
+.avatar{
+    display: flex;
+    flex:0;
+    width: 35px;
+    height: 35px;
+    padding: 10px;
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    margin-right: 10px;
+}
+.action-wrappr{
+    height: 400px;
+    overflow: auto;
+}
+.sb{
+    justify-content: space-between;
+}
+.notification-header{
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 15px 0 15px;
+    margin-bottom: 0;
+}
+.table-filter{
+    display: flex;
+}
+
+.notification-header button,
+.table-filter button{
+    border: 0;
+    padding: 5px;
+    border-radius: 5px;
+    background: transparent;
+    color: darkgray;
+}
+.br-15 {
+    border-radius: 15px;;
+}
+.notification-header button.active,
+.table-filter button.active{
+    border: 0;
+    padding: 5px;
+    border-radius: 5px;
+    background: rgb(204, 232, 240);
+    color: #000;
+}
+.btn-icon--red{
+    padding: 5px 10px;
+    border-radius: 15px;
+    color: red;
+    font-weight: 500;
+    font-size: 1rem;
+    width: 35px;
+    background: transparent;
+    border: 1px solid lightgray;
+}
+.msg{
+    font-size: 1.3rem;
+    font-weight: 500;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.huddle{
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #21c599;
+}
+.card-cust{
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    padding: 6px;
+    font-size: 1.4rem;
+    font-weight: 500;
+    border: none;
+    border-radius: 20px;
+}
+.App{
+    background-color: #f7f7f7;
+}
+.btn-filter{
+    border: 0;
+    border-radius: 20px;
+    padding: 5px 10px;
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+.listitem{
+    background-color:buttonface;
+    border-radius:20px;
+
+}
+.select {
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: blue;
+}
+.msgsince{
+    font-size: 1rem;
+    font-weight: 500;
+    color: lightgrey;
+    display: flex;
+    margin-bottom: 5px;
+    margin-left: 5px;
+}
+.notificationagesince{
+    display: flex;
+    justify-content: space-between;
+}
+.btn-form{
+    border: 0;
+    border-radius: 20px;
+    padding: 5px 10px;
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+.listitem button svg{
+    margin-right: 5px;
+}
+.form-tag{
+    color:#2c74cc;
+    background-color: lightgrey;
+}
+.appointmnet-tag{
+    color: #098724;
+    background-color: rgb(215 255 210);
+}
+.feedback-tag{
+    color:#ec1fb8;
+    background-color: rgb(230, 91, 133);
+}
+.app-request{
+    color:rgb(243, 174, 45);
+    background-color: rgb(228, 175, 89);
+}
