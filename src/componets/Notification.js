@@ -4,6 +4,7 @@ import notificationData from '../data/notifications.json'
 import { Card } from 'react-bootstrap';
 import * as notificationDesc from "../constants"
 import { generate_avatar_data } from '../utility'
+import moment from 'moment';
 
 const notificationdesc = notificationDesc.notificationDescriptionMap
 
@@ -29,7 +30,7 @@ export const Notification = () => {
                       <div className='main d-flex'>
                         <div className='notificationagesince'>
                           <span className='title'>{Object.keys(notificationdesc)[0].toLowerCase()}</span>
-                          <div className='msgsince'>2 months</div>
+                          <div className='msgsince'>{moment((data.date_created.split("T")[0]).split("-").join(""), "YYYYMMDD").fromNow()}</div>
                         </div>
                         <div>
                           {`${data.payment_amount} ${notificationdesc.PAYMENT.Desc} ${data.patient_first_name} ${data.patient_last_name} `}

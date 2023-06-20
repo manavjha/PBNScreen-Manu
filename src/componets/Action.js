@@ -1,10 +1,11 @@
 import React from 'react'
 import data from "../data/actions.json";
-import { FaCheck, FaPlus } from "react-icons/fa";
+import { FaCheck, FaTimes } from "react-icons/fa";
 
 import * as actiondesc from "../constants"
 import { generate_avatar_data } from '../utility'
 import { Card } from 'react-bootstrap';
+import moment from 'moment';
 
 const actionDesc = actiondesc.actionDescriptionMap
 const { actionStatus } = data
@@ -42,10 +43,10 @@ export const Action = () => {
                         </div>
                       </div>
                       <div >
-                        <div className='msgsince'>a year ago</div>
+                        <div className='msgsince'>{moment((todo.date_created.split("T")[0]).split("-").join(""), "YYYYMMDD").fromNow()}</div>
                         <div>
                           <button className='btn-icon--green' onClick={() => handleIgnoreTodo(index)}>{<FaCheck />}</button>
-                          <button className='btn-icon--red' onClick={() => handleCompleteTodo(index)}>{<FaPlus />}</button>
+                          <button className='btn-icon--red' onClick={() => handleCompleteTodo(index)}>{<FaTimes />}</button>
                         </div>
                       </div>
                     </Card.Body>
