@@ -17,7 +17,7 @@ export const Activity = ({ color, bgcolor }) => {
               <li className="mt-2 mb-2 w-75 listitem" style={{ backgroundColor: bgcolor }}>
 
                 <button type="button" className="btn-filter" style={{ color: color, backgroundColor: 'transparent' }}
-                ><FaCircle className={(item.text  ? `${item.text}-clr` : 'Orange')} />{item.text}</button></li>
+                ><FaCircle className={(item.text!=="Appt Request"  ? `${item.text}-clr` : "Orange")} />{item.text}</button></li>
             </div>)
           })
         }
