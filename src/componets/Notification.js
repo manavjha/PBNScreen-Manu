@@ -21,26 +21,27 @@ Object.prototype.getKeyByValue = function (value) {
 
 export const Notification = () => {
   const [data1, setData1] = useState(notificationData)
-  const [isActive, setIsActive] = useState(false);
+  const [isActive1, setIsActive1] = useState(false);
+  const [isActive2, setIsActive2] = useState(false);
   const handleUnread = (status) => {
     const filterdata = data1.filter(d => d.status == status)
     console.log(filterdata)
     setData1(filterdata)
-    setIsActive(current => !current);
+    setIsActive1(current => !current);
   }
   const handleAll = (status) => {
     const filterdata = data1.filter(d => d.status == status)
     setData1(filterdata)
     console.log(filterdata)
-    setIsActive(current => !current);
+    setIsActive2(current => !current);
   }
 
   return (
     <div >
       <div className='notification-header'>
         <h4 className='fx2'>Notification</h4>
-        <h5 className='fx1'> <button type='button' className={isActive ? 'active' : ''} onClick={() => handleUnread("unread")}>{"Unread"}</button></h5>
-        <h5 className='fx1'> <button type='button' className={isActive ? 'active' : ''} onClick={() => handleAll("all")}>{"All"}</button></h5>
+        <h5 className='fx1'> <button  className={isActive1 ? 'active' : ''} onClick={() => handleUnread("unread")}>{"Unread"}</button></h5>
+        <h5 className='fx1'> <button  className={isActive2 ? 'active' : ''} onClick={() => handleAll("all")}>{"All"}</button></h5>
       </div>
       <div className='action-wrappr'>
         {

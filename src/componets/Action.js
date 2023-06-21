@@ -21,7 +21,9 @@ Object.prototype.getKeyByValue = function (value) {
 
 export const Action = () => {
   const [data1, setdata1] = useState(data)
-  const [isActive, setIsActive] = useState(false);
+  const [isActive1, setIsActive1] = useState(false);
+  const [isActive2, setIsActive2] = useState(false);
+  const [isActive3, setIsActive3] = useState(false);
 
   const handleIgnoreTodo = () => {
 
@@ -31,33 +33,28 @@ export const Action = () => {
 
   }
 
-  const formfilter = (form) => {
-    const filterdata = data.filter(d => d.event_type == form)
-    setdata1(filterdata)
-    console.log(filterdata)
-  }
   const handlePending = (status) => {
     const filterdata = data.filter(d => d.status == status)
     setdata1(filterdata)
-    setIsActive(current => !current);
+    setIsActive1(current => !current);
   }
   const handleIgnored = (status) => {
     const filterdata = data.filter(d => d.status == status)
     setdata1(filterdata)
-    setIsActive(current => !current);
+    setIsActive2(current => !current);
   }
   const handleCompleted = (status) => {
     const filterdata = data.filter(d => d.status == status)
     setdata1(filterdata)
-    setIsActive(current => !current);
+    setIsActive3(current => !current);
   }
   return (
     <div >
       <div className='notification-header'>
         <h4 className='fx2'>Action Needed</h4>
-        <h5 className='fx1'> <button type='button' className={isActive ? 'active' : 'title'} onClick={() => handlePending("pending")}>{"Pending"}</button></h5>
-        <h5 className='fx1'><button type='button' className={isActive ? 'active' : ''} onClick={() => handleIgnored("ignored")}>{"Ignored"}</button></h5>
-        <h5 className='fx1'><button type='button' className={isActive ? 'active' : ''} onClick={() => handleCompleted("completed")}>{"Completed"}</button></h5>
+        <h5 className='fx1'> <button type='button' className={isActive1 ? 'active' : ''} onClick={() => handlePending("pending")}>{"Pending"}</button></h5>
+        <h5 className='fx1'><button type='button' className={isActive2 ? 'active' : ''} onClick={() => handleIgnored("ignored")}>{"Ignored"}</button></h5>
+        <h5 className='fx1'><button type='button' className={isActive3 ? 'active' : ''} onClick={() => handleCompleted("completed")}>{"Completed"}</button></h5>
       </div>
       <hr />
       <ul className='action-wrappr'>

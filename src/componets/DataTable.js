@@ -17,6 +17,10 @@ export const DataTable = () => {
   const btnref2 = useRef(null)
   const btnref3 = useRef(null)
 
+  const [isActive1, setIsActive1] = useState(false);
+  const [isActive2, setIsActive2] = useState(false);
+  const [isActive3, setIsActive3] = useState(false);
+
 
   const paytypeDataId = tableData.values.reduce((all, item) => {
     let existItem = all.find(({ paytype_id }) => item.paytype_id === paytype_id);
@@ -63,6 +67,7 @@ export const DataTable = () => {
     setIsrenderpaytype(true)
     setIsrenderemployeetype(false)
     setIsrenderprovidertype(false)
+    setIsActive1(current => !current);
     //  setIsrender(true)
   }
 
@@ -72,6 +77,7 @@ export const DataTable = () => {
     setIsrenderpaytype(false)
     setIsrenderemployeetype(false)
     setIsrenderprovidertype(true)
+    setIsActive2(current => !current);
     //  setIsrender(true)
   }
   const getEmployeetypeId = () => {
@@ -80,15 +86,16 @@ export const DataTable = () => {
     setIsrenderpaytype(false)
     setIsrenderemployeetype(true)
     setIsrenderprovidertype(false)
+    setIsActive3(current => !current);
     //  setIsrender(true)
   }
   return (
     <div className='p-3'>
       <div className='mb-2 table-filter'>
         <h5></h5>
-        <h5> <button ref={btnref1} className='active' onClick={getPaytypeId}>{"PaytypeID"}</button></h5>
-        <h5> <button ref={btnref2} onClick={getProviderId}>{"ProviderID"}</button></h5>
-        <h5> <button ref={btnref3} onClick={getEmployeetypeId}>{"EmployeeTypeID"}</button></h5>
+        <h5> <button ref={btnref1} className={isActive1 ? 'active' : ''} onClick={getPaytypeId}>{"PaytypeID"}</button></h5>
+        <h5> <button ref={btnref2} className={isActive2 ? 'active' : ''} onClick={getProviderId}>{"ProviderID"}</button></h5>
+        <h5> <button ref={btnref3} className={isActive3 ? 'active' : ''} onClick={getEmployeetypeId}>{"EmployeeTypeID"}</button></h5>
       </div>
       <Table bordered hover size="sm">
         {
