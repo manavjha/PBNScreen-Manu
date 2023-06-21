@@ -30,7 +30,7 @@ export const Notification = () => {
         {
 
           notificationData.map(data => {
-            if (data.status == "unread" && Object.keys(notificationdesc)[0] == "PAYMENT") {
+            if (data.status == "unread") {
               return <>
                 <Card className='wrap'>
                   <Card.Body className='d-flex-1 '>
@@ -43,8 +43,18 @@ export const Notification = () => {
                           <div className='msgsince'>{moment((data.date_created.split("T")[0]).split("-").join(""), "YYYYMMDD").fromNow()}</div>
                         </div>
                         <div>
-                          {`${data.payment_amount} ${notificationdesc.PAYMENT.Desc} ${data.patient_first_name} ${data.patient_last_name} `}
-                        </div>
+                        {notificationTagline.getKeyByValue(data.event_type) =="PAYMENT_RECEIVED" && 
+                          `${data.payment_amount} ${notificationdesc.PAYMENT.Desc} ${data.patient_first_name} ${data.patient_last_name} `
+                         }
+
+                        {notificationTagline.getKeyByValue(data.event_type) =="APPOINTMENT_CONFIRMED" && 
+                          ` ${data.patient_first_name} ${data.patient_last_name} ${notificationdesc.APPOINTMENT.Desc}`
+                         }
+
+                      {notificationTagline.getKeyByValue(data.event_type) =="FORM_SUBMITTED" && 
+                          ` ${data.patient_first_name} ${data.patient_last_name} ${notificationdesc.FORM.Desc} ${data.date_created}`
+                         }
+                          </div>
                       </div>
                     </div>
                   </Card.Body>

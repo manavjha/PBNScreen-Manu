@@ -75,6 +75,7 @@ export const notificationStatus = {
 
 export const notificationDescriptionMap = {
   PAYMENT: {text:"Payment", Desc:"Payment received from"},
-APPOINTMENT: {text:"Appointment", Desc:"Name confirmed her appointment"},
-APPOINTMENT_REQUESR: {text:"Appt Request", Desc:"you have received a feedback from Name"},
+  APPOINTMENT: {text:"Appointment", Desc:"confirmed her appointment"},
+APPOINTMENT_REQUESTED: {text:"Appt Request", Desc:"has booked an appointment on "},
+FORM: {text:"Form", Desc:"has submitted form successfully on "},
 };
