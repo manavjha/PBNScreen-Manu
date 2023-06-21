@@ -89,7 +89,7 @@ export const Action = () => {
                     </div>
                     <div >
                       <div className='msgsince'>{moment((todo.date_created.split("T")[0]).split("-").join(""), "YYYYMMDD").fromNow()}</div>
-                      <div>
+                      <div className={todo.status=="completed" || todo.status=="ignored" ? 'inactive' : ''}>
                         <button className='btn-icon--red' onClick={() => handleIgnoreTodo(index)}>{<FaTimes />}</button>
                         <button className='btn-icon--green' onClick={() => handleCompleteTodo()}>{<FaCheck />}</button>
                       </div>

@@ -82,6 +82,9 @@ ul li {
     background: transparent;
     color: darkgray;
 }
+.inactive{
+    display: none;
+}
 .br-15 {
     border-radius: 15px;;
 }
