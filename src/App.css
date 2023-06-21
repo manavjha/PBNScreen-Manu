@@ -88,6 +88,9 @@ ul li {
 .br-15 {
     border-radius: 15px;;
 }
+.table{
+    --bs-table-bg: #e2e2e2;
+}
 .Form-clr{
     color:blue;
 }
