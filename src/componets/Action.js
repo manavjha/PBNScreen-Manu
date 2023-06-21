@@ -20,75 +20,80 @@ Object.prototype.getKeyByValue = function (value) {
 }
 
 export const Action = () => {
-  const [data1,setdata1] = useState(data)
-  const handleIgnoreTodo = () => { 
+  const [data1, setdata1] = useState(data)
+  const [isActive, setIsActive] = useState(false);
+
+  const handleIgnoreTodo = () => {
 
 
   }
-  const handleCompleteTodo = (form) => { 
-    
+  const handleCompleteTodo = (form) => {
+
   }
 
   const formfilter = (form) => {
-    const filterdata = data.filter( d => d.event_type == form)
+    const filterdata = data.filter(d => d.event_type == form)
     setdata1(filterdata)
     console.log(filterdata)
   }
-  const handlePending = (status) => { 
-    const filterdata = data.filter( d => d.status ==status)
+  const handlePending = (status) => {
+    const filterdata = data.filter(d => d.status == status)
     setdata1(filterdata)
-   }
+    setIsActive(current => !current);
+  }
   const handleIgnored = (status) => {
-    const filterdata = data.filter( d => d.status ==status)
-    setdata1(filterdata) 
-   }
-  const handleCompleted = (status) => { 
-    const filterdata = data.filter( d => d.status ==status)
-    setdata1(filterdata) 
-   }
+    const filterdata = data.filter(d => d.status == status)
+    setdata1(filterdata)
+    setIsActive(current => !current);
+  }
+  const handleCompleted = (status) => {
+    const filterdata = data.filter(d => d.status == status)
+    setdata1(filterdata)
+    setIsActive(current => !current);
+  }
   return (
     <div >
       <div className='notification-header'>
         <h4 className='fx2'>Action Needed</h4>
-        <h5 className='fx1'> <button type='button' className='active' onClick={() => handlePending("pending")}>{"Pending"}</button></h5>
-        <h5 className='fx1'><button type='button' onClick={() => handleIgnored("ignored")}>{"Ignored"}</button></h5>
-        <h5 className='fx1'><button type='button' onClick={() => handleCompleted("completed")}>{"Completed"}</button></h5>
+        <h5 className='fx1'> <button type='button' className={isActive ? 'active' : 'title'} onClick={() => handlePending("pending")}>{"Pending"}</button></h5>
+        <h5 className='fx1'><button type='button' className={isActive ? 'active' : ''} onClick={() => handleIgnored("ignored")}>{"Ignored"}</button></h5>
+        <h5 className='fx1'><button type='button' className={isActive ? 'active' : ''} onClick={() => handleCompleted("completed")}>{"Completed"}</button></h5>
       </div>
       <hr />
       <ul className='action-wrappr'>
         {data1.map((todo, index) => {
-        //  if (todo.status == "pending" && Object.keys(actionDesc)[0] == "FORM") {
+          //  if (todo.status == "pending" && Object.keys(actionDesc)[0] == "FORM") {
 
-            return (
-              <>
-                <li key={index}>
-                  <Card className='wrap'>
-                    <Card.Body className='d-flex sb'>
-                      <div className='msg'>
-                        <span className='avatar' style={{ backgroundColor: generate_avatar_data(`${todo.patient_first_name}  ${todo.patient_last_name}`).color }}>{generate_avatar_data(`${todo.patient_first_name}  ${todo.patient_last_name}`).initials}</span>
-                        <div className='main d-flex'>
-                          <div>
-                            {/* <span className={"title " + (Object.keys(actionDesc)[0] == "form" ? 'form-tag' : 'title')}>{Object.keys(actionDesc)[0].toLowerCase()}</span> */}
-                            <span className="title">{actionevt.getKeyByValue(todo.event_type)}</span>
-                          </div>
-                          <div>
-                            {`${todo.patient_first_name}  ${todo.patient_last_name} ${actionDesc?.FORM.Desc} `}
-                          </div>
-                        </div>
-                      </div>
-                      <div >
-                        <div className='msgsince'>{moment((todo.date_created.split("T")[0]).split("-").join(""), "YYYYMMDD").fromNow()}</div>
+          return (
+            <>
+              <li key={index}>
+                <Card className='wrap'>
+                  <Card.Body className='d-flex sb'>
+                    <div className='msg'>
+                      <span className='avatar' style={{ backgroundColor: generate_avatar_data(`${todo.patient_first_name}  ${todo.patient_last_name}`).color }}>{generate_avatar_data(`${todo.patient_first_name}  ${todo.patient_last_name}`).initials}</span>
+                      <div className='main d-flex'>
                         <div>
-                          <button className='btn-icon--green' onClick={() => handleIgnoreTodo(index)}>{<FaCheck />}</button>
-                          <button className='btn-icon--red' onClick={() => handleCompleteTodo(actionevt.getKeyByValue(todo.event_type))}>{<FaTimes />}</button>
+                          {/* <span className={"title " + (Object.keys(actionDesc)[0] == "form" ? 'form-tag' : 'title')}>{Object.keys(actionDesc)[0].toLowerCase()}</span> */}
+                          <span className="title">{actionevt.getKeyByValue(todo.event_type)}</span>
+                        </div>
+                        <div>
+                          {`${todo.patient_first_name}  ${todo.patient_last_name} ${actionDesc?.FORM.Desc} `}
                         </div>
                       </div>
-                    </Card.Body>
-                  </Card>
-                </li>
-              </>
-            );
-        //  }
+                    </div>
+                    <div >
+                      <div className='msgsince'>{moment((todo.date_created.split("T")[0]).split("-").join(""), "YYYYMMDD").fromNow()}</div>
+                      <div>
+                        <button className='btn-icon--green' onClick={() => handleIgnoreTodo(index)}>{<FaCheck />}</button>
+                        <button className='btn-icon--red' onClick={() => handleCompleteTodo(actionevt.getKeyByValue(todo.event_type))}>{<FaTimes />}</button>
+                      </div>
+                    </div>
+                  </Card.Body>
+                </Card>
+              </li>
+            </>
+          );
+          //  }
 
         })}
       </ul>

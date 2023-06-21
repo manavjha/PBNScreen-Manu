@@ -20,64 +20,67 @@ Object.prototype.getKeyByValue = function (value) {
 
 
 export const Notification = () => {
-  const [data1,setData1] = useState(notificationData)
-  const handleUnread = (status) => { 
-    const filterdata = data1.filter( d => d.status == status)
+  const [data1, setData1] = useState(notificationData)
+  const [isActive, setIsActive] = useState(false);
+  const handleUnread = (status) => {
+    const filterdata = data1.filter(d => d.status == status)
     console.log(filterdata)
     setData1(filterdata)
-   }
+    setIsActive(current => !current);
+  }
   const handleAll = (status) => {
-    const filterdata = data1.filter( d => d.status ==status)
-    setData1(filterdata) 
+    const filterdata = data1.filter(d => d.status == status)
+    setData1(filterdata)
     console.log(filterdata)
-   }
+    setIsActive(current => !current);
+  }
 
   return (
     <div >
       <div className='notification-header'>
         <h4 className='fx2'>Notification</h4>
-        <h5 className='fx1'> <button type='button' className='active' onClick={() => handleUnread("unread")}>{"Unread"}</button></h5>
-        <h5 className='fx1'> <button type='button' onClick={() => handleAll("all")}>{"All"}</button></h5>
+        <h5 className='fx1'> <button type='button' className={isActive ? 'active' : ''} onClick={() => handleUnread("unread")}>{"Unread"}</button></h5>
+        <h5 className='fx1'> <button type='button' className={isActive ? 'active' : ''} onClick={() => handleAll("all")}>{"All"}</button></h5>
       </div>
       <div className='action-wrappr'>
         {
 
           data1.map(data => {
-          //  if (data.status == "unread") {
-              return <>
-                <Card className='wrap'>
-                  <Card.Body className='d-flex-1 '>
-                    <div className='msg'>
-                      <span className='avatar' style={{ backgroundColor: generate_avatar_data(`${data.patient_first_name}  ${data.patient_last_name}`).color }}>{generate_avatar_data(`${data.patient_first_name}  ${data.patient_last_name}`).initials}</span>
-                      <div className='main d-flex'>
-                        <div className='notificationagesince'>
-                          {/*<span className='title'>{Object.keys(notificationdesc)[0].toLowerCase()}</span> */}
-                          <span className='title'>{notificationTagline.getKeyByValue(data.event_type)}</span>
-                          <div className='msgsince'>{moment((data.date_created.split("T")[0]).split("-").join(""), "YYYYMMDD").fromNow()}</div>
-                        </div>
-                        <div>
-                        {notificationTagline.getKeyByValue(data.event_type) =="PAYMENT_RECEIVED" && 
+            //  if (data.status == "unread") {
+            return <>
+              <Card className='wrap'>
+                <Card.Body className='d-flex-1 '>
+                  <div className='msg'>
+                    <span className='avatar' style={{ backgroundColor: generate_avatar_data(`${data.patient_first_name}  ${data.patient_last_name}`).color }}>{generate_avatar_data(`${data.patient_first_name}  ${data.patient_last_name}`).initials}</span>
+                    <div className='main d-flex'>
+                      <div className='notificationagesince'>
+                        {/*<span className='title'>{Object.keys(notificationdesc)[0].toLowerCase()}</span> */}
+                        <span className='title'>{notificationTagline.getKeyByValue(data.event_type)}</span>
+                        <div className='msgsince'>{moment((data.date_created.split("T")[0]).split("-").join(""), "YYYYMMDD").fromNow()}</div>
+                      </div>
+                      <div>
+                        {notificationTagline.getKeyByValue(data.event_type) == "PAYMENT_RECEIVED" &&
                           `${data.payment_amount} ${notificationdesc.PAYMENT.Desc} ${data.patient_first_name} ${data.patient_last_name} `
-                         }
+                        }
 
-                        {notificationTagline.getKeyByValue(data.event_type) =="APPOINTMENT_CONFIRMED" && 
+                        {notificationTagline.getKeyByValue(data.event_type) == "APPOINTMENT_CONFIRMED" &&
                           ` ${data.patient_first_name} ${data.patient_last_name} ${notificationdesc.APPOINTMENT.Desc}`
-                         }
+                        }
 
-                      {notificationTagline.getKeyByValue(data.event_type) =="FORM_SUBMITTED" && 
+                        {notificationTagline.getKeyByValue(data.event_type) == "FORM_SUBMITTED" &&
                           ` ${data.patient_first_name} ${data.patient_last_name} ${notificationdesc.FORM.Desc} ${data.date_created}`
-                         }
+                        }
 
-                      {notificationTagline.getKeyByValue(data.event_type) =="APPOINTMENT_REQUEST_ACCEPTED" && 
+                        {notificationTagline.getKeyByValue(data.event_type) == "APPOINTMENT_REQUEST_ACCEPTED" &&
                           ` ${data?.patient_first_name} ${data?.patient_last_name} ${notificationdesc.APPOINTMENT_REQUESTED.Desc} ${data.scheduled_appointment_start_time}`
-                         }
-                          </div>
+                        }
                       </div>
                     </div>
-                  </Card.Body>
-                </Card>
-              </>
-          //  }
+                  </div>
+                </Card.Body>
+              </Card>
+            </>
+            //  }
 
           })
         }
