@@ -8,9 +8,19 @@ import { Card } from 'react-bootstrap';
 import moment from 'moment';
 
 const actionDesc = actiondesc.actionDescriptionMap
-const { actionStatus } = data
+const actionevt = actiondesc.actionEventTypeMap
+
+Object.prototype.getKeyByValue = function (value) {
+  for (var prop in this) {
+    if (this.hasOwnProperty(prop)) {
+      if (this[prop] === value)
+        return prop;
+    }
+  }
+}
 
 export const Action = () => {
+  console.log(obj.getKeyByValue("manu"))
   const handleIgnoreTodo = () => { }
   const handleCompleteTodo = () => { }
   return (
@@ -35,8 +45,8 @@ export const Action = () => {
                         <span className='avatar' style={{ backgroundColor: generate_avatar_data(`${todo.patient_first_name}  ${todo.patient_last_name}`).color }}>{generate_avatar_data(`${todo.patient_first_name}  ${todo.patient_last_name}`).initials}</span>
                         <div className='main d-flex'>
                           <div>
-                           {/* <span className={"title " + (Object.keys(actionDesc)[0] == "form" ? 'form-tag' : 'title')}>{Object.keys(actionDesc)[0].toLowerCase()}</span> */}
-                            <span className="title">{todo.event_type}</span>
+                            {/* <span className={"title " + (Object.keys(actionDesc)[0] == "form" ? 'form-tag' : 'title')}>{Object.keys(actionDesc)[0].toLowerCase()}</span> */}
+                            <span className="title">{actionevt.getKeyByValue(todo.event_type)}</span>
                           </div>
                           <div>
                             {`${todo.patient_first_name}  ${todo.patient_last_name} ${actionDesc?.FORM.Desc} `}

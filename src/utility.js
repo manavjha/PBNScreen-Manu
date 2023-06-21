@@ -53,3 +53,4 @@ export function generate_avatar_data(name) {
 }
 
 console.log(generate_avatar_data("Manu Jha"))
+

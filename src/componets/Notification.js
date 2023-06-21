@@ -7,10 +7,16 @@ import { generate_avatar_data } from '../utility'
 import moment from 'moment';
 
 const notificationTagline = notificationDesc.notificationEventTypeMap;
-notificationTagline.FORM_SUBMITTED
-
 const notificationdesc = notificationDesc.notificationDescriptionMap
 
+Object.prototype.getKeyByValue = function (value) {
+  for (var prop in this) {
+    if (this.hasOwnProperty(prop)) {
+      if (this[prop] === value)
+        return prop;
+    }
+  }
+}
 
 export const Notification = () => {
   return (
@@ -33,7 +39,7 @@ export const Notification = () => {
                       <div className='main d-flex'>
                         <div className='notificationagesince'>
                           {/*<span className='title'>{Object.keys(notificationdesc)[0].toLowerCase()}</span> */}
-                          <span className='title'>{data.event_type }</span>
+                          <span className='title'>{notificationTagline.getKeyByValue(data.event_type)}</span>
                           <div className='msgsince'>{moment((data.date_created.split("T")[0]).split("-").join(""), "YYYYMMDD").fromNow()}</div>
                         </div>
                         <div>
