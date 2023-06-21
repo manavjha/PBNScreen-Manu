@@ -68,6 +68,8 @@ export const DataTable = () => {
     setIsrenderemployeetype(false)
     setIsrenderprovidertype(false)
     setIsActive1(current => !current);
+    setIsActive2( current => current)
+    setIsActive3( current => current)
     //  setIsrender(true)
   }
 
@@ -78,6 +80,7 @@ export const DataTable = () => {
     setIsrenderemployeetype(false)
     setIsrenderprovidertype(true)
     setIsActive2(current => !current);
+    
     //  setIsrender(true)
   }
   const getEmployeetypeId = () => {
@@ -93,7 +96,7 @@ export const DataTable = () => {
     <div className='p-3'>
       <div className='mb-2 table-filter'>
         <h5></h5>
-        <h5> <button ref={btnref1} className={isActive1 ? 'active' : ''} onClick={getPaytypeId}>{"PaytypeID"}</button></h5>
+        <h5> <button ref={btnref1} className={isActive1 ? 'active' : 'title'} onClick={getPaytypeId}>{"PaytypeID"}</button></h5>
         <h5> <button ref={btnref2} className={isActive2 ? 'active' : ''} onClick={getProviderId}>{"ProviderID"}</button></h5>
         <h5> <button ref={btnref3} className={isActive3 ? 'active' : ''} onClick={getEmployeetypeId}>{"EmployeeTypeID"}</button></h5>
       </div>

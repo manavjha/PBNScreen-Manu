@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import data from "../data/actions.json";
-import { FaCheck, FaTimes } from "react-icons/fa";
+import { FaCheck, FaTimes, FaFilter, FaCircle } from "react-icons/fa";
 
 import * as actiondesc from "../constants"
 import { generate_avatar_data } from '../utility'
@@ -10,6 +10,9 @@ import moment from 'moment';
 const actionDesc = actiondesc.actionDescriptionMap
 const actionevt = actiondesc.actionEventTypeMap
 
+const actionfilter = actiondesc.actionFilterMap
+
+// Utility function for Object value return
 Object.prototype.getKeyByValue = function (value) {
   for (var prop in this) {
     if (this.hasOwnProperty(prop)) {
@@ -26,11 +29,17 @@ export const Action = () => {
   const [isActive3, setIsActive3] = useState(false);
 
   const handleIgnoreTodo = () => {
-
-
+    const newdata = [...data]
+    const objIndex = newdata.findIndex((obj => obj.status == "pending"));
+    newdata[objIndex].status = "ignored"
+    setdata1(newdata)
   }
-  const handleCompleteTodo = (form) => {
 
+  const handleCompleteTodo = () => {
+    const newdata = [...data]
+    const objIndex = newdata.findIndex((obj => obj.status == "pending"));
+    newdata[objIndex].status = "completed"
+    setdata1(newdata)
   }
 
   const handlePending = (status) => {
@@ -48,8 +57,10 @@ export const Action = () => {
     setdata1(filterdata)
     setIsActive3(current => !current);
   }
+
   return (
     <div >
+      {/* <Activity color="#30718c" bgcolor="#f7f7f7" /> */}
       <div className='notification-header'>
         <h4 className='fx2'>Action Needed</h4>
         <h5 className='fx1'> <button type='button' className={isActive1 ? 'active' : ''} onClick={() => handlePending("pending")}>{"Pending"}</button></h5>
@@ -59,8 +70,6 @@ export const Action = () => {
       <hr />
       <ul className='action-wrappr'>
         {data1.map((todo, index) => {
-          //  if (todo.status == "pending" && Object.keys(actionDesc)[0] == "FORM") {
-
           return (
             <>
               <li key={index}>
@@ -81,8 +90,8 @@ export const Action = () => {
                     <div >
                       <div className='msgsince'>{moment((todo.date_created.split("T")[0]).split("-").join(""), "YYYYMMDD").fromNow()}</div>
                       <div>
-                        <button className='btn-icon--green' onClick={() => handleIgnoreTodo(index)}>{<FaCheck />}</button>
-                        <button className='btn-icon--red' onClick={() => handleCompleteTodo(actionevt.getKeyByValue(todo.event_type))}>{<FaTimes />}</button>
+                        <button className='btn-icon--red' onClick={() => handleIgnoreTodo(index)}>{<FaTimes />}</button>
+                        <button className='btn-icon--green' onClick={() => handleCompleteTodo()}>{<FaCheck />}</button>
                       </div>
                     </div>
                   </Card.Body>
@@ -90,8 +99,6 @@ export const Action = () => {
               </li>
             </>
           );
-          //  }
-
         })}
       </ul>
 
