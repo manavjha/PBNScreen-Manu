@@ -20,7 +20,6 @@ Object.prototype.getKeyByValue = function (value) {
 }
 
 export const Action = () => {
-  console.log(obj.getKeyByValue("manu"))
   const handleIgnoreTodo = () => { }
   const handleCompleteTodo = () => { }
   return (
