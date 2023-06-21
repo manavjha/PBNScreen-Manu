@@ -1,4 +1,4 @@
-import React, { useEffect, useState,useRef } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import Table from 'react-bootstrap/Table';
 import tableData from '../data/table.json'
 
@@ -9,9 +9,9 @@ export const DataTable = () => {
   const [paytypedata, setPaytypedata] = useState([])
   const [providerdata, setProviderdata] = useState([])
   const [employeetypedata, setEmployeetypedata] = useState([])
-  const [isrenderpaytype,setIsrenderpaytype] = useState(false)
-  const [isrenderprovidertype,setIsrenderprovidertype] = useState(false)
-  const [isrenderemployeetype,setIsrenderemployeetype] = useState(false)
+  const [isrenderpaytype, setIsrenderpaytype] = useState(false)
+  const [isrenderprovidertype, setIsrenderprovidertype] = useState(false)
+  const [isrenderemployeetype, setIsrenderemployeetype] = useState(false)
 
   const btnref1 = useRef(null)
   const btnref2 = useRef(null)
@@ -51,35 +51,36 @@ export const DataTable = () => {
 
   }, [])
 
-useEffect( () => {
-//  getPaytypeId()
+  useEffect(() => {
+    // on page load default table data
+      getPaytypeId()
 
-},[])
+  }, [])
 
   const getPaytypeId = () => {
-   // setPaytypedata(paytypeDataId)
-    btnref1.current.textContent=="PaytypeID" ? setPaytypedata(paytypeDataId) : null
+    // setPaytypedata(paytypeDataId)
+    btnref1.current.textContent == "PaytypeID" ? setPaytypedata(paytypeDataId) : null
     setIsrenderpaytype(true)
     setIsrenderemployeetype(false)
     setIsrenderprovidertype(false)
-  //  setIsrender(true)
+    //  setIsrender(true)
   }
 
   const getProviderId = () => {
     //setProviderdata(providertypeDataId)
-    btnref2.current.textContent=="ProviderID" ? setProviderdata(providertypeDataId) : null
+    btnref2.current.textContent == "ProviderID" ? setProviderdata(providertypeDataId) : null
     setIsrenderpaytype(false)
     setIsrenderemployeetype(false)
     setIsrenderprovidertype(true)
-  //  setIsrender(true)
+    //  setIsrender(true)
   }
   const getEmployeetypeId = () => {
-   // setEmployeetypedata(employeetypeDataId)
-    btnref3.current.textContent=="EmployeeTypeID" ? setEmployeetypedata(employeetypeDataId) : null
+    // setEmployeetypedata(employeetypeDataId)
+    btnref3.current.textContent == "EmployeeTypeID" ? setEmployeetypedata(employeetypeDataId) : null
     setIsrenderpaytype(false)
     setIsrenderemployeetype(true)
     setIsrenderprovidertype(false)
-  //  setIsrender(true)
+    //  setIsrender(true)
   }
   return (
     <div className='p-3'>
@@ -90,17 +91,42 @@ useEffect( () => {
         <h5> <button ref={btnref3} onClick={getEmployeetypeId}>{"EmployeeTypeID"}</button></h5>
       </div>
       <Table bordered hover size="sm">
-        <thead>
-          <tr>
-            <th>DATE</th>
-            <th>PAYTYPE ID</th>
-            <th>VALUE</th>
-          </tr>
-        </thead>
+        {
+          isrenderpaytype &&
+          (<thead>
+            <tr>
+              <th>DATE</th>
+              <th>PAYTYPE ID</th>
+              <th>VALUE</th>
+            </tr>
+          </thead>)
+        }
+
+        {
+          isrenderprovidertype &&
+          (<thead>
+            <tr>
+              <th>DATE</th>
+              <th>PROVIDERTYPE ID</th>
+              <th>VALUE</th>
+            </tr>
+          </thead>)
+        }
+
+        {
+          isrenderemployeetype &&
+          (<thead>
+            <tr>
+              <th>DATE</th>
+              <th>EMPLOYEETYPE ID</th>
+              <th>VALUE</th>
+            </tr>
+          </thead>)
+        }
         <tbody>
           { /** this piece of code will render on condition of paytypeID */}
           {
-          isrenderpaytype && paytypedata.map(data => {
+            isrenderpaytype && paytypedata.map(data => {
               return <tr>
                 <td>{data.date}</td>
                 <td>{tableData.categories.paytype_id[data.paytype_id]}</td>
@@ -111,24 +137,24 @@ useEffect( () => {
 
           { /** this piece of code will render on condition of providertypeID */}
           {
-          isrenderprovidertype && providerdata.map(data => {
+            isrenderprovidertype && providerdata.map(data => {
               return <tr>
                 <td>{data.date}</td>
                 <td>{tableData.categories.provider_id[data.provider_id]}</td>
                 <td>{data.amount.toFixed(2)}</td>
               </tr>
-            }) 
+            })
           }
 
           { /** this piece of code will render on condition of employeetypeID */}
           {
-          isrenderemployeetype && employeetypedata.map(data => {
+            isrenderemployeetype && employeetypedata.map(data => {
               return <tr>
                 <td>{data.date}</td>
                 <td>{tableData.categories.employee_type_id[data.employee_type_id]}</td>
                 <td>{data.amount.toFixed(2)}</td>
               </tr>
-            }) 
+            })
           }
 
         </tbody>
