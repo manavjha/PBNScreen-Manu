@@ -1,12 +1,21 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState,useRef } from 'react'
 import Table from 'react-bootstrap/Table';
 import tableData from '../data/table.json'
+
+
 
 
 export const DataTable = () => {
   const [paytypedata, setPaytypedata] = useState([])
   const [providerdata, setProviderdata] = useState([])
   const [employeetypedata, setEmployeetypedata] = useState([])
+  const [isrenderpaytype,setIsrenderpaytype] = useState(false)
+  const [isrenderprovidertype,setIsrenderprovidertype] = useState(false)
+  const [isrenderemployeetype,setIsrenderemployeetype] = useState(false)
+
+  const btnref1 = useRef(null)
+  const btnref2 = useRef(null)
+  const btnref3 = useRef(null)
 
 
   const paytypeDataId = tableData.values.reduce((all, item) => {
@@ -43,26 +52,42 @@ export const DataTable = () => {
   }, [])
 
 useEffect( () => {
-  getPaytypeId()
+//  getPaytypeId()
+
 },[])
 
   const getPaytypeId = () => {
-    setPaytypedata(paytypeDataId)
+   // setPaytypedata(paytypeDataId)
+    btnref1.current.textContent=="PaytypeID" ? setPaytypedata(paytypeDataId) : null
+    setIsrenderpaytype(true)
+    setIsrenderemployeetype(false)
+    setIsrenderprovidertype(false)
+  //  setIsrender(true)
   }
 
   const getProviderId = () => {
-    setProviderdata(providertypeDataId)
+    //setProviderdata(providertypeDataId)
+    btnref2.current.textContent=="ProviderID" ? setProviderdata(providertypeDataId) : null
+    setIsrenderpaytype(false)
+    setIsrenderemployeetype(false)
+    setIsrenderprovidertype(true)
+  //  setIsrender(true)
   }
   const getEmployeetypeId = () => {
-    setEmployeetypedata(employeetypeDataId)
+   // setEmployeetypedata(employeetypeDataId)
+    btnref3.current.textContent=="EmployeeTypeID" ? setEmployeetypedata(employeetypeDataId) : null
+    setIsrenderpaytype(false)
+    setIsrenderemployeetype(true)
+    setIsrenderprovidertype(false)
+  //  setIsrender(true)
   }
   return (
     <div className='p-3'>
       <div className='mb-2 table-filter'>
         <h5></h5>
-        <h5> <button className='active' onClick={getPaytypeId}>{"PaytypeID"}</button></h5>
-        <h5> <button onClick={getProviderId}>{"ProviderID"}</button></h5>
-        <h5> <button onClick={getEmployeetypeId}>{"EmployeeTypeID"}</button></h5>
+        <h5> <button ref={btnref1} className='active' onClick={getPaytypeId}>{"PaytypeID"}</button></h5>
+        <h5> <button ref={btnref2} onClick={getProviderId}>{"ProviderID"}</button></h5>
+        <h5> <button ref={btnref3} onClick={getEmployeetypeId}>{"EmployeeTypeID"}</button></h5>
       </div>
       <Table bordered hover size="sm">
         <thead>
@@ -75,7 +100,7 @@ useEffect( () => {
         <tbody>
           { /** this piece of code will render on condition of paytypeID */}
           {
-            paytypedata && paytypedata.map(data => {
+          isrenderpaytype && paytypedata.map(data => {
               return <tr>
                 <td>{data.date}</td>
                 <td>{tableData.categories.paytype_id[data.paytype_id]}</td>
@@ -86,7 +111,7 @@ useEffect( () => {
 
           { /** this piece of code will render on condition of providertypeID */}
           {
-           providerdata && providerdata.map(data => {
+          isrenderprovidertype && providerdata.map(data => {
               return <tr>
                 <td>{data.date}</td>
                 <td>{tableData.categories.provider_id[data.provider_id]}</td>
@@ -97,7 +122,7 @@ useEffect( () => {
 
           { /** this piece of code will render on condition of employeetypeID */}
           {
-            employeetypedata && employeetypedata.map(data => {
+          isrenderemployeetype && employeetypedata.map(data => {
               return <tr>
                 <td>{data.date}</td>
                 <td>{tableData.categories.employee_type_id[data.employee_type_id]}</td>

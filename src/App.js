@@ -16,7 +16,7 @@ export default function App() {
     <Container>
 
     <HeroPanel />
-  <h2>Activity</h2>
+  <h2 className="mb-5">Activity</h2>
   <Row className="bg-white p-3 br-15">
     <Col sm={2}>
     <Activity color="#30718c" bgcolor="#f7f7f7"/>
