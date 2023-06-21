@@ -85,6 +85,24 @@ ul li {
 .br-15 {
     border-radius: 15px;;
 }
+.Form-clr{
+    color:blue;
+}
+.Appointment-clr{
+    color: #098724;
+}
+.Feedback-clr{
+    color: chocolate;
+}
+.Review-clr{
+    color: #000;
+}
+.Payment-clr{
+    color: deepskyblue;
+}
+.Orange{
+    color: orange;
+}
 .notification-header button.active,
 .table-filter button.active{
     border: 0;

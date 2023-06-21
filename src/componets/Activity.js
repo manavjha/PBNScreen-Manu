@@ -1,5 +1,5 @@
 import React from 'react'
-import { FaFilter, FaDotCircle } from "react-icons/fa";
+import { FaFilter, FaCircle } from "react-icons/fa";
 
 import * as y from "../constants"
 
@@ -17,7 +17,7 @@ export const Activity = ({ color, bgcolor }) => {
               <li className="mt-2 mb-2 w-75 listitem" style={{ backgroundColor: bgcolor }}>
 
                 <button type="button" className="btn-filter" style={{ color: color, backgroundColor: 'transparent' }}
-                ><FaDotCircle />{item.text}</button></li>
+                ><FaCircle className={(item.text  ? `${item.text}-clr` : 'Orange')} />{item.text}</button></li>
             </div>)
           })
         }
