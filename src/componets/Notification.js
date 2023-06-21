@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import notificationData from '../data/notifications.json'
 import { Card } from 'react-bootstrap';
@@ -18,19 +18,32 @@ Object.prototype.getKeyByValue = function (value) {
   }
 }
 
+
 export const Notification = () => {
+  const [data1,setData1] = useState(notificationData)
+  const handleUnread = (status) => { 
+    const filterdata = data1.filter( d => d.status == status)
+    console.log(filterdata)
+    setData1(filterdata)
+   }
+  const handleAll = (status) => {
+    const filterdata = data1.filter( d => d.status ==status)
+    setData1(filterdata) 
+    console.log(filterdata)
+   }
+
   return (
     <div >
       <div className='notification-header'>
         <h4 className='fx2'>Notification</h4>
-        <h5 className='fx1'> <button className='active'>{"Unread"}</button></h5>
-        <h5 className='fx1'> <button >{"All"}</button></h5>
+        <h5 className='fx1'> <button type='button' className='active' onClick={() => handleUnread("unread")}>{"Unread"}</button></h5>
+        <h5 className='fx1'> <button type='button' onClick={() => handleAll("all")}>{"All"}</button></h5>
       </div>
       <div className='action-wrappr'>
         {
 
-          notificationData.map(data => {
-            if (data.status == "unread") {
+          data1.map(data => {
+          //  if (data.status == "unread") {
               return <>
                 <Card className='wrap'>
                   <Card.Body className='d-flex-1 '>
@@ -64,7 +77,7 @@ export const Notification = () => {
                   </Card.Body>
                 </Card>
               </>
-            }
+          //  }
 
           })
         }

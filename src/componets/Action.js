@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import data from "../data/actions.json";
 import { FaCheck, FaTimes } from "react-icons/fa";
 
@@ -20,19 +20,43 @@ Object.prototype.getKeyByValue = function (value) {
 }
 
 export const Action = () => {
-  const handleIgnoreTodo = () => { }
-  const handleCompleteTodo = () => { }
+  const [data1,setdata1] = useState(data)
+  const handleIgnoreTodo = () => { 
+
+
+  }
+  const handleCompleteTodo = (form) => { 
+    
+  }
+
+  const formfilter = (form) => {
+    const filterdata = data.filter( d => d.event_type == form)
+    setdata1(filterdata)
+    console.log(filterdata)
+  }
+  const handlePending = (status) => { 
+    const filterdata = data.filter( d => d.status ==status)
+    setdata1(filterdata)
+   }
+  const handleIgnored = (status) => {
+    const filterdata = data.filter( d => d.status ==status)
+    setdata1(filterdata) 
+   }
+  const handleCompleted = (status) => { 
+    const filterdata = data.filter( d => d.status ==status)
+    setdata1(filterdata) 
+   }
   return (
     <div >
       <div className='notification-header'>
         <h4 className='fx2'>Action Needed</h4>
-        <h5 className='fx1'> <button className='active'>{"Pending"}</button></h5>
-        <h5 className='fx1'><button>{"Ignored"}</button></h5>
-        <h5 className='fx1'><button>{"Completed"}</button></h5>
+        <h5 className='fx1'> <button type='button' className='active' onClick={() => handlePending("pending")}>{"Pending"}</button></h5>
+        <h5 className='fx1'><button type='button' onClick={() => handleIgnored("ignored")}>{"Ignored"}</button></h5>
+        <h5 className='fx1'><button type='button' onClick={() => handleCompleted("completed")}>{"Completed"}</button></h5>
       </div>
       <hr />
       <ul className='action-wrappr'>
-        {data.map((todo, index) => {
+        {data1.map((todo, index) => {
         //  if (todo.status == "pending" && Object.keys(actionDesc)[0] == "FORM") {
 
             return (
@@ -56,7 +80,7 @@ export const Action = () => {
                         <div className='msgsince'>{moment((todo.date_created.split("T")[0]).split("-").join(""), "YYYYMMDD").fromNow()}</div>
                         <div>
                           <button className='btn-icon--green' onClick={() => handleIgnoreTodo(index)}>{<FaCheck />}</button>
-                          <button className='btn-icon--red' onClick={() => handleCompleteTodo(index)}>{<FaTimes />}</button>
+                          <button className='btn-icon--red' onClick={() => handleCompleteTodo(actionevt.getKeyByValue(todo.event_type))}>{<FaTimes />}</button>
                         </div>
                       </div>
                     </Card.Body>
@@ -66,7 +90,6 @@ export const Action = () => {
             );
         //  }
 
-          return null;
         })}
       </ul>
 
