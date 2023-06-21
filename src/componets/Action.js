@@ -33,7 +33,7 @@ export const Action = () => {
       <hr />
       <ul className='action-wrappr'>
         {data.map((todo, index) => {
-          if (todo.status == "pending" && Object.keys(actionDesc)[0] == "FORM") {
+        //  if (todo.status == "pending" && Object.keys(actionDesc)[0] == "FORM") {
 
             return (
               <>
@@ -64,7 +64,7 @@ export const Action = () => {
                 </li>
               </>
             );
-          }
+        //  }
 
           return null;
         })}

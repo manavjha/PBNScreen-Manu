@@ -54,6 +54,10 @@ export const Notification = () => {
                       {notificationTagline.getKeyByValue(data.event_type) =="FORM_SUBMITTED" && 
                           ` ${data.patient_first_name} ${data.patient_last_name} ${notificationdesc.FORM.Desc} ${data.date_created}`
                          }
+
+                      {notificationTagline.getKeyByValue(data.event_type) =="APPOINTMENT_REQUEST_ACCEPTED" && 
+                          ` ${data?.patient_first_name} ${data?.patient_last_name} ${notificationdesc.APPOINTMENT_REQUESTED.Desc} ${data.scheduled_appointment_start_time}`
+                         }
                           </div>
                       </div>
                     </div>
