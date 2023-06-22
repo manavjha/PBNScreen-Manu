@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState,useCallback } from 'react'
 
 import notificationData from '../data/notifications.json'
 import { Card } from 'react-bootstrap';
@@ -23,33 +23,33 @@ export const Notification = () => {
   const [data1, setData1] = useState(notificationData)
   const [isActive, setIsActive] = useState("");
 
-
-  const handleUnread = (status) => {
-    const filterdata = data1.filter(d => d.status == status)
+  const handleUnread = useCallback(
+    (status) => () => {
+      const filterdata = data1.filter(d => d.status == status)
     console.log(filterdata)
     setData1(filterdata)
     setIsActive(status);
-  }
-  const handleAll = (status) => {
+    },[],)
+
+  const handleAll = useCallback(
+    (status) => () => {
     const filterdata = data1.filter(d => d.status == status)
     setData1(filterdata)
     console.log(filterdata)
     setIsActive(status);
-  }
-
+    },[],)
 
   return (
     <div >
       <div className='notification-header'>
         <h4 className='fx2'>Notification</h4>
-        <h5 className='fx1'> <button className={isActive == "unread" ? 'active' : ''} onClick={() => handleUnread("unread")}>{"Unread"}</button></h5>
-        <h5 className='fx1'> <button className={isActive == "all" ? 'active' : ''} onClick={() => handleAll("all")}>{"All"}</button></h5>
+        <h5 className='fx1'> <button className={isActive == "unread" ? 'active' : ''} onClick={handleUnread("unread")}>{"Unread"}</button></h5>
+        <h5 className='fx1'> <button className={isActive == "all" ? 'active' : ''} onClick={handleAll("all")}>{"All"}</button></h5>
       </div>
       <div className='action-wrappr'>
         {
 
           data1.map(data => {
-            //  if (data.status == "unread") {
             return <>
               <Card className='wrap'>
                 <Card.Body className='d-flex-1 '>
@@ -57,7 +57,6 @@ export const Notification = () => {
                     <span className='avatar' style={{ backgroundColor: generate_avatar_data(`${data.patient_first_name}  ${data.patient_last_name}`).color }}>{generate_avatar_data(`${data.patient_first_name}  ${data.patient_last_name}`).initials}</span>
                     <div className='main d-flex'>
                       <div className='notificationagesince'>
-                        {/*<span className='title'>{Object.keys(notificationdesc)[0].toLowerCase()}</span> */}
                         <span className={notificationTagline.getKeyByValue(data.event_type) == notificationTagline.getKeyByValue(data.event_type) ? `${notificationTagline.getKeyByValue(data.event_type)}-clr` : 'title'}>{notificationTagline.getKeyByValue(data.event_type)}</span>
                         <div className='msgsince'>{moment((data.date_created.split("T")[0]).split("-").join(""), "YYYYMMDD").fromNow()}</div>
                       </div>
@@ -83,12 +82,9 @@ export const Notification = () => {
                 </Card.Body>
               </Card>
             </>
-            //  }
-
           })
         }
       </div>
-
     </div>
   )
 }

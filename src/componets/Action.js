@@ -87,7 +87,7 @@ export const Action = () => {
                       <div className='msgsince'>{moment((todo.date_created.split("T")[0]).split("-").join(""), "YYYYMMDD").fromNow()}</div>
                       <div className={todo.status == "completed" || todo.status == "ignored" ? 'inactive' : ''}>
                         <button className='btn-icon--green' onClick={() => handleCompleteTodo()}>{<FaCheck />}</button>
-                        <button className='btn-icon--red' onClick={() => handleIgnoreTodo(index)}>{<FaTimes />}</button>
+                        <button className='btn-icon--red' onClick={() => handleIgnoreTodo()}>{<FaTimes />}</button>
                       </div>
                     </div>
                   </Card.Body>

@@ -2,7 +2,6 @@ import React, { useEffect, useState, useRef } from 'react'
 import Table from 'react-bootstrap/Table';
 import tableData from '../data/table.json'
 
-
 export const DataTable = () => {
   const [paytypedata, setPaytypedata] = useState([])
   const [providerdata, setProviderdata] = useState([])
@@ -119,7 +118,6 @@ export const DataTable = () => {
           </thead>)
         }
         <tbody>
-          { /** this piece of code will render on condition of paytypeID */}
           {
             isrenderpaytype && paytypedata.map(data => {
               return <tr>
@@ -129,8 +127,6 @@ export const DataTable = () => {
               </tr>
             })
           }
-
-          { /** this piece of code will render on condition of providertypeID */}
           {
             isrenderprovidertype && providerdata.map(data => {
               return <tr>
@@ -140,8 +136,6 @@ export const DataTable = () => {
               </tr>
             })
           }
-
-          { /** this piece of code will render on condition of employeetypeID */}
           {
             isrenderemployeetype && employeetypedata.map(data => {
               return <tr>

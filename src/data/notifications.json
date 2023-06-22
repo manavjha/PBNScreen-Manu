@@ -629,7 +629,7 @@
         "object_id": "6456",
         "object_type": "AC",
         "event_type": "AC",
-        "status": "unread",
+        "status": "all",
         "date_created": "2023-02-14 11:27:50.763822-08:00",
         "patient_sex": "M",
         "patient_first_name": "Patrick",
