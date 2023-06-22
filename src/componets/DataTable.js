@@ -3,8 +3,6 @@ import Table from 'react-bootstrap/Table';
 import tableData from '../data/table.json'
 
 
-
-
 export const DataTable = () => {
   const [paytypedata, setPaytypedata] = useState([])
   const [providerdata, setProviderdata] = useState([])
@@ -17,10 +15,7 @@ export const DataTable = () => {
   const btnref2 = useRef(null)
   const btnref3 = useRef(null)
 
-  const [isActive1, setIsActive1] = useState(false);
-  const [isActive2, setIsActive2] = useState(false);
-  const [isActive3, setIsActive3] = useState(false);
-
+  const [isActive, setIsActive] = useState(null);
 
   const paytypeDataId = tableData.values.reduce((all, item) => {
     let existItem = all.find(({ paytype_id }) => item.paytype_id === paytype_id);
@@ -57,48 +52,38 @@ export const DataTable = () => {
 
   useEffect(() => {
     // on page load default table data
-      getPaytypeId()
-
+    getPaytypeId()
   }, [])
 
-  const getPaytypeId = () => {
-    // setPaytypedata(paytypeDataId)
+  const getPaytypeId = (status) => {
     btnref1.current.textContent == "PaytypeID" ? setPaytypedata(paytypeDataId) : null
     setIsrenderpaytype(true)
     setIsrenderemployeetype(false)
     setIsrenderprovidertype(false)
-    setIsActive1(current => !current);
-    setIsActive2( current => current)
-    setIsActive3( current => current)
-    //  setIsrender(true)
+    setIsActive(status);
   }
 
-  const getProviderId = () => {
-    //setProviderdata(providertypeDataId)
+  const getProviderId = (status) => {
     btnref2.current.textContent == "ProviderID" ? setProviderdata(providertypeDataId) : null
     setIsrenderpaytype(false)
     setIsrenderemployeetype(false)
     setIsrenderprovidertype(true)
-    setIsActive2(current => !current);
-    
-    //  setIsrender(true)
+    setIsActive(status);
   }
-  const getEmployeetypeId = () => {
-    // setEmployeetypedata(employeetypeDataId)
+  const getEmployeetypeId = (status) => {
     btnref3.current.textContent == "EmployeeTypeID" ? setEmployeetypedata(employeetypeDataId) : null
     setIsrenderpaytype(false)
     setIsrenderemployeetype(true)
     setIsrenderprovidertype(false)
-    setIsActive3(current => !current);
-    //  setIsrender(true)
+    setIsActive(status);
   }
   return (
     <div className='p-3'>
       <div className='mb-2 table-filter'>
         <h5></h5>
-        <h5> <button ref={btnref1} className={isActive1 ? 'active' : 'title'} onClick={getPaytypeId}>{"PaytypeID"}</button></h5>
-        <h5> <button ref={btnref2} className={isActive2 ? 'active' : ''} onClick={getProviderId}>{"ProviderID"}</button></h5>
-        <h5> <button ref={btnref3} className={isActive3 ? 'active' : ''} onClick={getEmployeetypeId}>{"EmployeeTypeID"}</button></h5>
+        <h5> <button ref={btnref1} className={isActive == "PaytypeID" ? 'active' : 'title'} onClick={() => getPaytypeId("PaytypeID")}>{"PaytypeID"}</button></h5>
+        <h5> <button ref={btnref2} className={isActive == "ProviderID" ? 'active' : ''} onClick={() => getProviderId("ProviderID")}>{"ProviderID"}</button></h5>
+        <h5> <button ref={btnref3} className={isActive == "EmployeeTypeID" ? 'active' : ''} onClick={() => getEmployeetypeId("EmployeeTypeID")}>{"EmployeeTypeID"}</button></h5>
       </div>
       <Table bordered hover size="sm">
         {
@@ -166,10 +151,8 @@ export const DataTable = () => {
               </tr>
             })
           }
-
         </tbody>
       </Table>
-
     </div>
   )
 }

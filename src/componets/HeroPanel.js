@@ -31,7 +31,7 @@ export const HeroPanel = () => {
             <Col sm={4}>
               <Card className='card-cust'>
                 <Card.Body><p>Find revenue opportunities.</p> </Card.Body>
-                <FaReply/>
+                <FaReply />
               </Card>
             </Col>
           </Row>

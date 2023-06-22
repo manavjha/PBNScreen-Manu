@@ -10,8 +10,6 @@ import moment from 'moment';
 const actionDesc = actiondesc.actionDescriptionMap
 const actionevt = actiondesc.actionEventTypeMap
 
-const actionfilter = actiondesc.actionFilterMap
-
 // Utility function for Object value return
 Object.prototype.getKeyByValue = function (value) {
   for (var prop in this) {
@@ -24,9 +22,7 @@ Object.prototype.getKeyByValue = function (value) {
 
 export const Action = () => {
   const [data1, setdata1] = useState(data)
-  const [isActive1, setIsActive1] = useState(false);
-  const [isActive2, setIsActive2] = useState(false);
-  const [isActive3, setIsActive3] = useState(false);
+  const [isActive1, setIsActive1] = useState(null);
 
   const handleIgnoreTodo = () => {
     const newdata = [...data]
@@ -45,17 +41,18 @@ export const Action = () => {
   const handlePending = (status) => {
     const filterdata = data.filter(d => d.status == status)
     setdata1(filterdata)
-    setIsActive1(current => !current);
+    setIsActive1(status);
   }
+
   const handleIgnored = (status) => {
     const filterdata = data.filter(d => d.status == status)
     setdata1(filterdata)
-    setIsActive2(current => !current);
+    setIsActive1(status);
   }
   const handleCompleted = (status) => {
     const filterdata = data.filter(d => d.status == status)
     setdata1(filterdata)
-    setIsActive3(current => !current);
+    setIsActive1(status);
   }
 
   return (
@@ -63,9 +60,9 @@ export const Action = () => {
       {/* <Activity color="#30718c" bgcolor="#f7f7f7" /> */}
       <div className='notification-header'>
         <h4 className='fx2'>Action Needed</h4>
-        <h5 className='fx1'> <button type='button' className={isActive1 ? 'active' : ''} onClick={() => handlePending("pending")}>{"Pending"}</button></h5>
-        <h5 className='fx1'><button type='button' className={isActive2 ? 'active' : ''} onClick={() => handleIgnored("ignored")}>{"Ignored"}</button></h5>
-        <h5 className='fx1'><button type='button' className={isActive3 ? 'active' : ''} onClick={() => handleCompleted("completed")}>{"Completed"}</button></h5>
+        <h5 className='fx1'> <button type='button' className={isActive1 == "pending" ? 'active' : ''} onClick={() => handlePending("pending")}>{"Pending"}</button></h5>
+        <h5 className='fx1'><button type='button' className={isActive1 == "ignored" ? 'active' : ''} onClick={() => handleIgnored("ignored")}>{"Ignored"}</button></h5>
+        <h5 className='fx1'><button type='button' className={isActive1 == "completed" ? 'active' : ''} onClick={() => handleCompleted("completed")}>{"Completed"}</button></h5>
       </div>
       <hr />
       <ul className='action-wrappr'>
@@ -79,8 +76,6 @@ export const Action = () => {
                       <span className='avatar' style={{ backgroundColor: generate_avatar_data(`${todo.patient_first_name}  ${todo.patient_last_name}`).color }}>{generate_avatar_data(`${todo.patient_first_name}  ${todo.patient_last_name}`).initials}</span>
                       <div className='main d-flex'>
                         <div>
-                          {/* "GENERAL_FORM_SUBMISSION_PRACTICE_ALERT"
-                          <span className={"title " + (Object.keys(actionDesc)[0] == "form" ? 'form-tag' : 'title')}>{Object.keys(actionDesc)[0].toLowerCase()}</span> */}
                           <span className={actionevt.getKeyByValue(todo.event_type) == actionevt.getKeyByValue(todo.event_type) ? `${actionevt.getKeyByValue(todo.event_type)}-clr` : 'title'}>{actionevt.getKeyByValue(todo.event_type)}</span>
                         </div>
                         <div>
@@ -102,7 +97,6 @@ export const Action = () => {
           );
         })}
       </ul>
-
     </div>
   )
 }

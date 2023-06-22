@@ -6,9 +6,6 @@ import * as y from "../constants"
 const actionfilter = y.actionFilterMap
 
 export const Activity = ({ color, bgcolor }) => {
-  const handleFilter = (val) => {
-    console.log("from Activity",val)
-  }
   return (
     <>
       <h4><FaFilter /> Filter Activity</h4>
@@ -18,7 +15,6 @@ export const Activity = ({ color, bgcolor }) => {
           Object.values(actionfilter).map(item => {
             return (<div key={item}>
               <li className="mt-2 mb-2 w-75 listitem" style={{ backgroundColor: bgcolor }}>
-
                 <button type="button" className="btn-filter" onClick={() =>handleFilter(item.text)} style={{ color: color, backgroundColor: 'transparent' }}
                 ><FaCircle className={(item.text!=="Appt Request"  ? `${item.text}-clr` : "Orange")} />{item.text}</button></li>
             </div>)

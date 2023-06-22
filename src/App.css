@@ -5,10 +5,11 @@
     line-height: 1.5;
 }
 
-h2{
+h2 {
     font-size: 3rem;
 }
-.btn-icon--green{
+
+.btn-icon--green {
     padding: 5px 10px;
     border-radius: 15px;
     color: green;
@@ -19,35 +20,42 @@ h2{
     border: 1px solid lightgray;
     margin-right: 5px;
 }
+
 ul li {
     list-style: none;
 }
-.title{
+
+.title {
     display: inline-block;
     background-color: #e9e6e6;
     padding-left: 10px;
     padding-right: 10px;
     border-radius: 10px;
-    
+
 }
-.wrap{
+
+.wrap {
     margin: 10px;
     padding: 10px;
     border-radius: 10px;
 }
-.fx1{
-    flex:0
+
+.fx1 {
+    flex: 0
 }
-.fx2{
-    flex:4
+
+.fx2 {
+    flex: 4
 }
-.main{
+
+.main {
     flex-direction: column;
-    flex:1
+    flex: 1
 }
-.avatar{
+
+.avatar {
     display: flex;
-    flex:0;
+    flex: 0;
     width: 35px;
     height: 35px;
     padding: 10px;
@@ -57,48 +65,59 @@ ul li {
     color: #fff;
     margin-right: 10px;
 }
-.action-wrappr{
+
+.action-wrappr {
     height: 400px;
     overflow: auto;
 }
-.sb{
+
+.sb {
     justify-content: space-between;
 }
-.notification-header{
+
+.notification-header {
     display: flex;
     justify-content: space-between;
     padding: 15px 15px 0 15px;
     margin-bottom: 0;
 }
-.table-filter{
+
+.table-filter {
     display: flex;
 }
 
 .notification-header button,
-.table-filter button{
+.table-filter button {
     border: 0;
     padding: 5px;
     border-radius: 5px;
     background: transparent;
     color: darkgray;
 }
-.inactive{
+
+.inactive {
     display: none;
 }
+
 .br-15 {
-    border-radius: 15px;;
+    border-radius: 15px;
+    ;
 }
-.table{
+
+.table {
     --bs-table-bg: #e2e2e2;
 }
-.Form-clr{
-    color:blue;
+
+.Form-clr {
+    color: blue;
 }
-.Appointment-clr{
+
+.Appointment-clr {
     color: #098724;
 }
+
 /* Action */
-.GENERAL_FORM_SUBMISSION_PRACTICE_ALERT-clr{
+.GENERAL_FORM_SUBMISSION_PRACTICE_ALERT-clr {
     background-color: #b3f4c1;
     color: #268b3a;
     display: flex;
@@ -108,7 +127,8 @@ ul li {
     padding-left: 5px;
     border-radius: 15px;
 }
-.FORM_SUBMISSION_REQUIRE_STAFF_SIGNATURE-clr{
+
+.FORM_SUBMISSION_REQUIRE_STAFF_SIGNATURE-clr {
     background-color: #ebf0a7;
     color: #8d8d19;
     display: flex;
@@ -118,7 +138,8 @@ ul li {
     padding-left: 5px;
     border-radius: 15px;
 }
-.UNCLASSIFIED_MESSAGE_RECEIVED-clr{
+
+.UNCLASSIFIED_MESSAGE_RECEIVED-clr {
     background-color: #f4d2b3;
     color: #a35e22;
     display: flex;
@@ -128,7 +149,8 @@ ul li {
     padding-left: 5px;
     border-radius: 15px;
 }
-.UNKNOWN_PATIENT_FORM_SUBMITTED-clr{
+
+.UNKNOWN_PATIENT_FORM_SUBMITTED-clr {
     background-color: #cfbdf7;
     color: #26558b;
     display: flex;
@@ -138,7 +160,8 @@ ul li {
     padding-left: 5px;
     border-radius: 15px;
 }
-.UNFAVORABLE_REVIEW_RECEIVED-clr{
+
+.UNFAVORABLE_REVIEW_RECEIVED-clr {
     background-color: #f4b3c1;
     color: #9c2e74;
     display: flex;
@@ -148,8 +171,9 @@ ul li {
     padding-left: 5px;
     border-radius: 15px;
 }
+
 /* Notifications */
-.APPOINTMENT_CONFIRMED-clr{
+.APPOINTMENT_CONFIRMED-clr {
     background-color: #b3f4c1;
     color: #268b3a;
     display: flex;
@@ -160,7 +184,7 @@ ul li {
     border-radius: 15px;
 }
 
-.FORM_SUBMITTED-clr{
+.FORM_SUBMITTED-clr {
     background-color: #ebf0a7;
     color: #8d8d19;
     display: flex;
@@ -170,7 +194,8 @@ ul li {
     padding-left: 5px;
     border-radius: 15px;
 }
-.APPOINTMENT_REQUEST_ACCEPTED-clr{
+
+.APPOINTMENT_REQUEST_ACCEPTED-clr {
     background-color: #a7e7f0;
     color: #19688d;
     display: flex;
@@ -180,27 +205,33 @@ ul li {
     padding-left: 5px;
     border-radius: 15px;
 }
-.Feedback-clr{
+
+.Feedback-clr {
     color: chocolate;
 }
-.Review-clr{
+
+.Review-clr {
     color: #000;
 }
-.Payment-clr{
+
+.Payment-clr {
     color: deepskyblue;
 }
-.Orange{
+
+.Orange {
     color: orange;
 }
+
 .notification-header button.active,
-.table-filter button.active{
+.table-filter button.active {
     border: 0;
     padding: 5px;
     border-radius: 5px;
     background: rgb(204, 232, 240);
     color: #000;
 }
-.btn-icon--red{
+
+.btn-icon--red {
     padding: 5px 10px;
     border-radius: 15px;
     color: red;
@@ -210,20 +241,23 @@ ul li {
     background: transparent;
     border: 1px solid lightgray;
 }
-.msg{
+
+.msg {
     font-size: 1.3rem;
     font-weight: 500;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.huddle{
+
+.huddle {
     text-decoration: none;
     font-size: 1.5rem;
     font-weight: 500;
     color: #21c599;
 }
-.card-cust{
+
+.card-cust {
     display: flex;
     flex-direction: row;
     align-items: baseline;
@@ -233,27 +267,32 @@ ul li {
     border: none;
     border-radius: 20px;
 }
-.App{
+
+.App {
     background-color: #f7f7f7;
 }
-.btn-filter{
+
+.btn-filter {
     border: 0;
     border-radius: 20px;
     padding: 5px 10px;
     font-size: 1.2rem;
     font-weight: 500;
 }
-.listitem{
-    background-color:buttonface;
-    border-radius:20px;
+
+.listitem {
+    background-color: buttonface;
+    border-radius: 20px;
 
 }
+
 .select {
     font-size: 1.4rem;
     font-weight: 500;
     color: blue;
 }
-.msgsince{
+
+.msgsince {
     font-size: 1rem;
     font-weight: 500;
     color: lightgrey;
@@ -261,33 +300,40 @@ ul li {
     margin-bottom: 5px;
     margin-left: 5px;
 }
-.notificationagesince{
+
+.notificationagesince {
     display: flex;
     justify-content: space-between;
 }
-.btn-form{
+
+.btn-form {
     border: 0;
     border-radius: 20px;
     padding: 5px 10px;
     font-size: 1.2rem;
     font-weight: 500;
 }
-.listitem button svg{
+
+.listitem button svg {
     margin-right: 5px;
 }
-.form-tag{
-    color:#2c74cc;
+
+.form-tag {
+    color: #2c74cc;
     background-color: lightgrey;
 }
-.appointmnet-tag{
+
+.appointmnet-tag {
     color: #098724;
     background-color: rgb(215 255 210);
 }
-.feedback-tag{
-    color:#ec1fb8;
+
+.feedback-tag {
+    color: #ec1fb8;
     background-color: rgb(230, 91, 133);
 }
-.app-request{
-    color:rgb(243, 174, 45);
+
+.app-request {
+    color: rgb(243, 174, 45);
     background-color: rgb(228, 175, 89);
 }
