@@ -24,20 +24,20 @@ export const Notification = () => {
   const [isActive1, setIsActive1] = useState(false);
   const [isActive2, setIsActive2] = useState(false);
 
-  const handleUnread = function(status){
+  const handleUnread = function (status) {
     const filterdata = data1.filter(d => d.status == status)
     console.log(filterdata)
-    if(filterdata.length >0){
+    if (filterdata.length > 0) {
       setData1(filterdata)
     }
     setIsActive1(current => !current);
   }
-  const handleAll = function(status)  {
+  const handleAll = function (status) {
     const filterdata = data1.filter(d => d.status == status)
-    if(filterdata.length >0){
+    if (filterdata.length > 0) {
       setData1(filterdata)
     }
-    
+
     console.log(filterdata)
     setIsActive2(current => !current);
   }
@@ -47,8 +47,8 @@ export const Notification = () => {
     <div >
       <div className='notification-header'>
         <h4 className='fx2'>Notification</h4>
-        <h5 className='fx1'> <button  className={isActive1 ? 'active' : ''} onClick={handleUnread.bind(null,"unread")}>{"Unread"}</button></h5>
-        <h5 className='fx1'> <button  className={isActive2 ? 'active' : ''} onClick={handleAll.bind(null,"all")}>{"All"}</button></h5>
+        <h5 className='fx1'> <button className={isActive1 ? 'active' : ''} onClick={handleUnread.bind(null, "unread")}>{"Unread"}</button></h5>
+        <h5 className='fx1'> <button className={isActive2 ? 'active' : ''} onClick={handleAll.bind(null, "all")}>{"All"}</button></h5>
       </div>
       <div className='action-wrappr'>
         {
@@ -63,7 +63,7 @@ export const Notification = () => {
                     <div className='main d-flex'>
                       <div className='notificationagesince'>
                         {/*<span className='title'>{Object.keys(notificationdesc)[0].toLowerCase()}</span> */}
-                        <span  className={notificationTagline.getKeyByValue(data.event_type) == notificationTagline.getKeyByValue(data.event_type)? `${notificationTagline.getKeyByValue(data.event_type)}-clr` : 'title'}>{notificationTagline.getKeyByValue(data.event_type)}</span>
+                        <span className={notificationTagline.getKeyByValue(data.event_type) == notificationTagline.getKeyByValue(data.event_type) ? `${notificationTagline.getKeyByValue(data.event_type)}-clr` : 'title'}>{notificationTagline.getKeyByValue(data.event_type)}</span>
                         <div className='msgsince'>{moment((data.date_created.split("T")[0]).split("-").join(""), "YYYYMMDD").fromNow()}</div>
                       </div>
                       <div>

@@ -81,7 +81,7 @@ export const Action = () => {
                         <div>
                           {/* "GENERAL_FORM_SUBMISSION_PRACTICE_ALERT"
                           <span className={"title " + (Object.keys(actionDesc)[0] == "form" ? 'form-tag' : 'title')}>{Object.keys(actionDesc)[0].toLowerCase()}</span> */}
-                          <span  className={actionevt.getKeyByValue(todo.event_type) == actionevt.getKeyByValue(todo.event_type)? `${actionevt.getKeyByValue(todo.event_type)}-clr` : 'title'}>{actionevt.getKeyByValue(todo.event_type)}</span>
+                          <span className={actionevt.getKeyByValue(todo.event_type) == actionevt.getKeyByValue(todo.event_type) ? `${actionevt.getKeyByValue(todo.event_type)}-clr` : 'title'}>{actionevt.getKeyByValue(todo.event_type)}</span>
                         </div>
                         <div>
                           {`${todo.patient_first_name}  ${todo.patient_last_name} ${actionDesc?.FORM.Desc} `}
@@ -90,9 +90,9 @@ export const Action = () => {
                     </div>
                     <div >
                       <div className='msgsince'>{moment((todo.date_created.split("T")[0]).split("-").join(""), "YYYYMMDD").fromNow()}</div>
-                      <div className={todo.status=="completed" || todo.status=="ignored" ? 'inactive' : ''}>
-                        <button className='btn-icon--red' onClick={() => handleIgnoreTodo(index)}>{<FaTimes />}</button>
+                      <div className={todo.status == "completed" || todo.status == "ignored" ? 'inactive' : ''}>
                         <button className='btn-icon--green' onClick={() => handleCompleteTodo()}>{<FaCheck />}</button>
+                        <button className='btn-icon--red' onClick={() => handleIgnoreTodo(index)}>{<FaTimes />}</button>
                       </div>
                     </div>
                   </Card.Body>
