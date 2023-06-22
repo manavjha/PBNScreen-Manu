@@ -97,6 +97,89 @@ ul li {
 .Appointment-clr{
     color: #098724;
 }
+/* Action */
+.GENERAL_FORM_SUBMISSION_PRACTICE_ALERT-clr{
+    background-color: #b3f4c1;
+    color: #268b3a;
+    display: flex;
+    height: 25px;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 5px;
+    border-radius: 15px;
+}
+.FORM_SUBMISSION_REQUIRE_STAFF_SIGNATURE-clr{
+    background-color: #ebf0a7;
+    color: #8d8d19;
+    display: flex;
+    height: 25px;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 5px;
+    border-radius: 15px;
+}
+.UNCLASSIFIED_MESSAGE_RECEIVED-clr{
+    background-color: #f4d2b3;
+    color: #a35e22;
+    display: flex;
+    height: 25px;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 5px;
+    border-radius: 15px;
+}
+.UNKNOWN_PATIENT_FORM_SUBMITTED-clr{
+    background-color: #cfbdf7;
+    color: #26558b;
+    display: flex;
+    height: 25px;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 5px;
+    border-radius: 15px;
+}
+.UNFAVORABLE_REVIEW_RECEIVED-clr{
+    background-color: #f4b3c1;
+    color: #9c2e74;
+    display: flex;
+    height: 25px;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 5px;
+    border-radius: 15px;
+}
+/* Notifications */
+.APPOINTMENT_CONFIRMED-clr{
+    background-color: #b3f4c1;
+    color: #268b3a;
+    display: flex;
+    height: 25px;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 5px;
+    border-radius: 15px;
+}
+
+.FORM_SUBMITTED-clr{
+    background-color: #ebf0a7;
+    color: #8d8d19;
+    display: flex;
+    height: 25px;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 5px;
+    border-radius: 15px;
+}
+.APPOINTMENT_REQUEST_ACCEPTED-clr{
+    background-color: #a7e7f0;
+    color: #19688d;
+    display: flex;
+    height: 25px;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 5px;
+    border-radius: 15px;
+}
 .Feedback-clr{
     color: chocolate;
 }

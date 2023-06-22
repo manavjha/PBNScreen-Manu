@@ -79,8 +79,9 @@ export const Action = () => {
                       <span className='avatar' style={{ backgroundColor: generate_avatar_data(`${todo.patient_first_name}  ${todo.patient_last_name}`).color }}>{generate_avatar_data(`${todo.patient_first_name}  ${todo.patient_last_name}`).initials}</span>
                       <div className='main d-flex'>
                         <div>
-                          {/* <span className={"title " + (Object.keys(actionDesc)[0] == "form" ? 'form-tag' : 'title')}>{Object.keys(actionDesc)[0].toLowerCase()}</span> */}
-                          <span className="title">{actionevt.getKeyByValue(todo.event_type)}</span>
+                          {/* "GENERAL_FORM_SUBMISSION_PRACTICE_ALERT"
+                          <span className={"title " + (Object.keys(actionDesc)[0] == "form" ? 'form-tag' : 'title')}>{Object.keys(actionDesc)[0].toLowerCase()}</span> */}
+                          <span  className={actionevt.getKeyByValue(todo.event_type) == actionevt.getKeyByValue(todo.event_type)? `${actionevt.getKeyByValue(todo.event_type)}-clr` : 'title'}>{actionevt.getKeyByValue(todo.event_type)}</span>
                         </div>
                         <div>
                           {`${todo.patient_first_name}  ${todo.patient_last_name} ${actionDesc?.FORM.Desc} `}
