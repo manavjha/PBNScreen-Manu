@@ -76,7 +76,8 @@ export const Action = () => {
                       <span className='avatar' style={{ backgroundColor: generate_avatar_data(`${todo.patient_first_name}  ${todo.patient_last_name}`).color }}>{generate_avatar_data(`${todo.patient_first_name}  ${todo.patient_last_name}`).initials}</span>
                       <div className='main d-flex'>
                         <div>
-                          <span className={actionevt.getKeyByValue(todo.event_type) == actionevt.getKeyByValue(todo.event_type) ? `${actionevt.getKeyByValue(todo.event_type)}-clr` : 'title'}>{actionevt.getKeyByValue(todo.event_type)}</span>
+                          <span className={actionevt.getKeyByValue(todo.event_type) == actionevt.getKeyByValue(todo.event_type) ? `${actionevt.getKeyByValue(todo.event_type)}-clr` : 'title'}>
+                            {actionevt.getKeyByValue(todo.event_type) =="CALLBACK_REQUESTED" || "UNCLASSIFIED_MESSAGE_RECEIVED"?"Appointment":actionevt.getKeyByValue(todo.event_type)}</span>
                         </div>
                         <div>
                           {`${todo.patient_first_name}  ${todo.patient_last_name} ${actionDesc?.FORM.Desc} `}

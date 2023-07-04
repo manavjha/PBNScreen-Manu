@@ -1,0 +1,15 @@
+.wrapper{
+    display: flex;
+    flex-wrap: wrap;
+}
+.wrapper > div:first-child {
+  /*  width: 315px; */
+}
+.wrapper .card-img{
+    
+}
+
+.wrapper .foot {
+    display: flex;
+    justify-content: space-between;
+}

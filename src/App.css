@@ -336,3 +336,12 @@ ul li {
     color: rgb(243, 174, 45);
     background-color: rgb(228, 175, 89);
 }
+.header{
+    height: 65px;
+    background: linear-gradient(to right, #0cbaba, #380036);
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem; 
+}

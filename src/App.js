@@ -10,6 +10,7 @@ import { Container, Row, Col, ButtonGroup } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css'
 import Filter from "./componets/Filter";
+import { Main } from "./Swiggy/components/Main";
 
 export default function App() {
   return <div className="App">
@@ -33,6 +34,7 @@ export default function App() {
       <Row className="bg-white br-15">
         <Col>
           <DataTable />
+          <Main />
         </Col>
       </Row>
     </Container>

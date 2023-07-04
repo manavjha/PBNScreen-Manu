@@ -7,6 +7,9 @@ import { NavLink, BrowserRouter } from 'react-router-dom';
 export const HeroPanel = () => {
   return (
     <BrowserRouter>
+    <div className='header'>
+      Dashboard for Notifications and Actions
+    </div>
       <Row className='mt-5'>
         <Col xs={6} md={7}>
           <h2>Welcome Back, Chris.</h2>
